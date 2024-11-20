@@ -1,0 +1,35 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment directories
+venv/
+env/
+*.env/
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# Terraform files
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# AWS Key Pair file (Do not commit private keys)
+*.pem
+
+# Log files
+*.log
+
+# Flask-specific
+instance/
+
+# Dependency directories
+node_modules/
+
+# Docker files
+Dockerfile
+docker-compose.yml
