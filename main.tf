@@ -17,8 +17,9 @@ resource "aws_key_pair" "flask_key_pair" {
 # Create a new security group for the EC2 instance
 resource "aws_security_group" "flask_sg" {
   name        = "flask_sg"
-  description = "Allow HTTP and SSH access"
+  description = "Allow HTTP, SSH, and Flask API access"
 
+  # HTTP (Port 80)
   ingress {
     from_port   = 80
     to_port     = 80
@@ -26,6 +27,7 @@ resource "aws_security_group" "flask_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # SSH (Port 22)
   ingress {
     from_port   = 22
     to_port     = 22
@@ -33,6 +35,15 @@ resource "aws_security_group" "flask_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Flask API (Port 5000)
+  ingress {
+    from_port   = 5000
+    to_port     = 5000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Egress (allow all outbound traffic)
   egress {
     from_port   = 0
     to_port     = 0
